@@ -1,0 +1,18 @@
+import urllib.request,urllib.parse,urllib.error
+
+fhand=urllib.request.urlopen('https://www.linkedin.com/m/in/nilay-paul-062521186')
+count={}
+mylist=[]
+for lines in fhand:
+    line=lines.decode().rstrip()
+    print(line)
+    words=line.split()
+    for word in words:
+        count[word]=count.get(word,0)+1
+for word,count in count.items():
+    temp=(count,word)
+    mylist.append(temp)
+mylist=sorted(mylist)
+for count,word in mylist:
+    print(count,word)
+    
